@@ -19,8 +19,16 @@ export class PieComponent implements OnInit {
     plugins: {
       datalabels: {
         formatter: (value, ctx) => {
-          const label = ctx.chart.data.labels[ctx.dataIndex];
-          return label;
+          /*const label = ctx.chart.data.labels[ctx.dataIndex];
+          return label;*/
+          // @ts-ignore
+          const suma = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+          return ctx.chart.data.labels[ctx.dataIndex] + ' : '  + Math.round(value * 100 / suma ).toFixed(2) + '%';
+
+        // formatter: (value, ctx) => {
+
+
+
         },
       },
     }

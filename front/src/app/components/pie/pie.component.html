@@ -1,5 +1,5 @@
 <div>
-  <div class="chart">
+  <div class="chart p-0 m-0">
     <canvas baseChart
             [data]="pieChartData"
             [labels]="pieChartLabels"
@@ -7,7 +7,9 @@
             [options]="pieChartOptions"
             [plugins]="pieChartPlugins"
             [colors]="pieChartColors"
-            [legend]="pieChartLegend">
+            [legend]="pieChartLegend"
+
+    >
     </canvas>
   </div>
 </div>

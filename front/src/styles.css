@@ -2,3 +2,13 @@
 body{
   background: whitesmoke;
 }
+.row {
+  margin:0 !important;
+}
+.chart {
+  width: 100%;
+  min-height: 250px;
+  padding: 0;
+  margin: 0;
+}
+

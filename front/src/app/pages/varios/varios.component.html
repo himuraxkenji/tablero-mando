@@ -1,1 +1,72 @@
-<p>varios works!</p>
+<div class="container-fluid p-2">
+
+  <div class="row p-0 mt-2 mb-2">
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Liquidez acida y corriente</p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseAnios && promiseLiquidesAcida && promiseLiquidesCorriente) | async" [barChartData]="liquidezTotal" [barChartLabels]="anios"></app-barras>
+         </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Liquidez acida </p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseAnios && promiseLiquidesAcida ) | async" [barChartData]="liquidesAcida" [barChartLabels]="anios"></app-barras>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Liquidez corriente</p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseAnios && promiseLiquidesCorriente) | async" [barChartData]="liquidezCorriente" [barChartLabels]="anios"></app-barras>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="row"><br> </div>
+  <div class="row p-0 m-2">
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Solvencia</p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseAnios && promiseSolvencia) | async" [barChartData]="solvencia" [barChartLabels]="anios"></app-barras>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Endeudamiento</p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseAnios && promiseEndeudamiento) | async" [barChartData]="endeudamiento" [barChartLabels]="anios"></app-barras>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Esfuerzo Comercial</p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseAnios && promiseEsfuerzo) | async" [barChartData]="esfuerzo" [barChartLabels]="anios"></app-barras>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

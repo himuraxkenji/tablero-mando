@@ -1,21 +1,136 @@
 <div class="container-fluid p-2">
+<!--  justify-content-md-center-->
+  <div class="clearfix"></div>
 
-  <div class="row justify-content-md-center">
+  <!-- FILA UNO -->
+  <div class="row">
 
-    <app-pie class="col-4" [pieChartData]="totalHombresMujeres" [pieChartLabels]="labelHombresYMujeres"></app-pie>
-    <app-card class="col-2 " [titulo]="'Total Empleados'" [subtitulo]="''" [contenido]="totalEmpleados" [clases]="'text-white bg-dark'"></app-card>
-    <app-card class="col-2" [titulo]="'Total Hombres'" [subtitulo]="''" [contenido]="totalHombresMujeres[0]" [clases]="'text-white bg-danger'"></app-card>
-    <app-card class="col-2" [titulo]="'Total Mujeres'" [subtitulo]="''" [contenido]="totalHombresMujeres[1]" [clases]="'text-white bg-success'"></app-card>
+    <div class=" col-lg-2" >
+      <app-card class="row" [titulo]="'Total de Sueldos'"  [contenido]="totalSueldos" [clases]="'text-white bg-dark'"></app-card>
+      <app-card class="row" [titulo]="'Salario mas bajo'"  [contenido]="minimoSueldos" [clases]="'text-white bg-danger'"></app-card>
+      <app-card class="row" [titulo]="'Salario mas alto'"  [contenido]="maximoSueldos" [clases]="'text-white bg-success'"></app-card>
+      <app-card class="row" [titulo]="'Salario promedio'"  [contenido]="sueldoPromedio" [clases]="'text-white bg-primary'"></app-card>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Inasistencia por genero</p>
+        </div>
+        <div class="card-body">
+          <app-pie  [pieChartData]="totalInasistenciaGenero" [pieChartLabels]="labelHombresYMujeres"></app-pie>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card p-0 m-0">
+        <div class="card-header">
+          Inasistencias
+        </div>
+        <div class="card-body">
+          <app-barchart *ngIf="(promiseInasistenciaHombres && promiseInasistenciaMujeres) | async" [options]="optionsInasistencia" [title]="'Example'" [data]="inasistencia" [columnNames]="labelInasistenciaGenero">
+          </app-barchart>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card p-0 m-0">
+        <div class="card-header">
+          Asistencia
+        </div>
+        <div class="card-body">
+          <app-pie class="col p-0 m-0" [pieChartData]="totalAsistencia" [pieChartLabels]="labelAsistencia"></app-pie>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- FILA DOS -->
+  <div class="row">
+    <div class="col-md-2">
+      <div class="row">
+        <app-card  [titulo]="'Total Empleados'"  [contenido]="totalEmpleados" [clases]="'text-white bg-dark'"></app-card>
+      </div>
+      <div class="row">
+        <app-card  [titulo]="'Total Hombres'"  [contenido]="totalHombresMujeres[0]" [clases]="'text-white bg-danger'"></app-card>
+      </div>
+      <div class="row">
+        <app-card [titulo]="'Total Mujeres'"  [contenido]="totalHombresMujeres[1]" [clases]="'text-white bg-success'"></app-card>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card p-0 m-0">
+        <div class="card-header">
+          Empleados
+        </div>
+        <div class="card-body">
+          <app-pie class="col p-0 m-0" [pieChartData]="totalHombresMujeres" [pieChartLabels]="labelHombresYMujeres"></app-pie>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+
+      <div class="row">
+        <app-barchart *ngIf="(promiseCursosHombres && promiseCursosMujeres) | async"
+          [options]="optionsCursos" [title]="'Cursos'" [data]="totalCursos" [columnNames]="labelCursoCapacitacion">
+        </app-barchart>
+      </div>
+      <div class="row">
+        <app-barchart *ngIf="(promiseExtrasHombres && promiseExtrasMujeres) | async"
+          [options]="optionsExtras" [title]="'Horas Extra'" [data]="totalHorasExtra" [columnNames]="labelHorasExtra">
+        </app-barchart>
+      </div>
+      <div class="row">
+        <app-barchart *ngIf="(promiseDespidosHombres && promiseDespidosMujeres) | async" [options]="optionsDespidos" [title]="'Despidos'" [data]="totalDespidos" [columnNames]="labelDespidos">
+        </app-barchart>
+      </div>
+    </div>
 
   </div>
 
 
+<!--
+  <div class="row">
 
+
+    <div class="col-md-6">
+      <div class="card p-0 m-0">
+        <div class="card-header">
+          Inasistencia por genero
+        </div>
+        <div class="card-body">
+          <app-pie class="col p-0 m-0" [pieChartData]="totalInasistenciaGenero" [pieChartLabels]="labelHombresYMujeres"></app-pie>
+
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <!--<div class="row">
+    <app-barchart class="col-6" [options]="options" [title]="'Example'" [data]="inasistencia" [columnNames]="labelInasistenciaGenero">
+
+    </app-barchart>
+  </div>-->
+  <!--<google-chart #chart
+                [title]="title"
+                [type]="type"
+                [data]="inasistencia"
+                [columnNames]="labelInasistenciaGenero"
+                [options]="options"
+                [width]="width"
+                [height]="height">
+  </google-chart>-->
 </div>
 
 <!--
-Salario mas Bajo
-Salario mas alto
 Porcentaje de ausentismo	Por genero
 Cursos de capacitacion	Cursos de capacitacion por genero
 Horas Extras por genero
