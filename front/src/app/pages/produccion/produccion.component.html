@@ -1,1 +1,70 @@
-<p>produccion works!</p>
+<div class="container-fluid p-2">
+
+<div class="row p-0 mt-2 mb-2">
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Avance </p>
+        </div>
+        <div class="card-body">
+          <app-horizontal-chart *ngIf="(promiseProductos && promiseTerminados ) | async" [barChartData]="terminados" [barChartLabels]="productos"></app-horizontal-chart>
+     </div>
+      </div>
+    </div>
+
+  <div class="col-lg-4">
+    <div class="card" >
+      <div class="card-header justify-content-md-center">
+        <p >En Produccion </p>
+      </div>
+      <div class="card-body">
+        <app-horizontal-chart *ngIf="(promiseEnProceso && promiseTerminados ) | async" [barChartData]="enProceso" [barChartLabels]="productos"></app-horizontal-chart>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card" >
+      <div class="card-header justify-content-md-center">
+        <p >Defectuosos</p>
+      </div>
+      <div class="card-body">
+        <app-horizontal-chart *ngIf="(promiseDefectuoso && promiseTerminados ) | async" [barChartData]="defectuosos" [barChartLabels]="productos"></app-horizontal-chart>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <br>
+  <div class="row p-0 mt-2 mb-2">
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Porcentajes Avance </p>
+        </div>
+        <div class="card-body">
+          <app-donut [doughnutChartData]="porcentajesAvance"></app-donut>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Porcentajes en Processo</p>
+        </div>
+        <div class="card-body">
+          <app-donut [doughnutChartData]="porcentajesProceso"></app-donut>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Porcentajes defectuosos</p>
+        </div>
+        <div class="card-body">
+          <app-donut [doughnutChartData]="porcentajesDefectuosos"></app-donut>
+        </div>
+      </div>
+    </div>
+</div>

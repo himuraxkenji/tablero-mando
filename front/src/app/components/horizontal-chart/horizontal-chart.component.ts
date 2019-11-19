@@ -1,21 +1,23 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
+import {Label} from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import { Label } from 'ng2-charts';
 
 @Component({
-  selector: 'app-barras',
-  templateUrl: './barras.component.html',
-  styleUrls: ['./barras.component.css']
+  selector: 'app-horizontal-chart',
+  templateUrl: './horizontal-chart.component.html',
+  styleUrls: ['./horizontal-chart.component.css']
 })
-export class BarrasComponent implements OnInit {
+export class HorizontalChartComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
-    scales: { xAxes: [{ }], yAxes: [{ticks: {
+    scales: { xAxes: [{
+        ticks: {
           beginAtZero: true
-        }}] },
+        }
+      }], yAxes: [{}] },
     plugins: {
       datalabels: {
         anchor: 'end',
@@ -23,13 +25,14 @@ export class BarrasComponent implements OnInit {
         formatter: (value, ctx) => {
           return value.toFixed(3);
         }
+
       }
     }
   };
   @Input() barChartLabels: Label[] = [];
-  barChartType: ChartType = 'bar';
-  barChartLegend = true;
+  barChartType: ChartType = 'horizontalBar';
   barChartPlugins = [pluginDataLabels];
+  barChartLegend: true;
 
 
   @Input() barChartData: ChartDataSets[] = [];
@@ -38,7 +41,4 @@ export class BarrasComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
-
 }

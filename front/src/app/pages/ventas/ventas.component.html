@@ -1,1 +1,27 @@
-<p>ventas works!</p>
+<div class="container-fluid p-2">
+
+  <div class="row p-0 mt-2 mb-2">
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Ventas por Mes</p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseMeses && promiseImportes) | async" [barChartData]="importesPorMes" [barChartLabels]="meses"></app-barras>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p > Importe Trimestres </p>
+        </div>
+        <div class="card-body">
+          <app-barras *ngIf="(promiseMeses && promiseImportes) | async" [barChartData]="importeTrimestre" [barChartLabels]="trimestre"></app-barras>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
