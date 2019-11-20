@@ -14,9 +14,20 @@ export class VentasComponent implements OnInit {
   promiseImportes: Promise<boolean>;
   importesPorMes: ChartDataSets[] = [];
   importeTrimestre: ChartDataSets[] = [];
+  porcentajeContadoMes: number[];
+  porcentajeCreditoMes: number[];
+  porcentajeTotal: ChartDataSets[] = [];
+  contadoTrimestre: ChartDataSets[] = [];
+
   meses: Label[] = [];
   trimestre: Label[] = [];
 
+  porcentajeCred: Label[] = ['Contado', 'Credito'];
+  ubicaciones: string[];
+  ventasUbicaciones: number[] = [];
+  colores: string[] = [];
+  medios: string[] = [];
+  ventasMedio: number[] = [];
 
   constructor(private ventasService: VentasService) { }
 
@@ -31,6 +42,49 @@ export class VentasComponent implements OnInit {
       this.importeTrimestre = [{ data: this.getTrimestre(resp), label: 'Importe Trimestres', backgroundColor: this.getRandomColor()}];
       this.promiseImportes = Promise.resolve(true);
     });
+
+    this.ventasService.getContadoPorTotal().subscribe(resp => {
+      this.porcentajeContadoMes = resp;
+    });
+
+    this.ventasService.getCreditoPorTotal().subscribe(resp => {
+      this.porcentajeCreditoMes = resp;
+      this.porcentajeCreditoMes.forEach((item, index) => {
+        this.porcentajeTotal.push({data: [this.porcentajeCreditoMes[index], this.porcentajeContadoMes[index]]});
+      });
+    });
+
+    this.ventasService.getVentasUbicacionesNoZero().subscribe(resp => {
+      this.ubicaciones = resp;
+      Promise.resolve(true);
+      console.log(resp);
+    });
+
+    this.ventasService.getVentasUbicaciones().subscribe(resp => {
+      resp.forEach((item) => {
+        this.colores.push(this.getRandomColor());
+      });
+
+      // this.ventasUbicaciones = [{data: resp, label: 'Ubicaciones', backgroundColor: this.colores}];
+      this.ventasUbicaciones = resp;
+      Promise.resolve(true);
+      console.log(resp);
+    });
+
+    this.ventasService.getMedios().subscribe(resp => {
+      this.medios = resp;
+      Promise.resolve(true);
+
+    });
+    this.ventasService.getVentasMedios().subscribe(resp => {
+      this.ventasMedio = resp;
+      // this.ventasUbicaciones = [{data: resp, label: 'Ubicaciones', backgroundColor: this.colores}];
+      Promise.resolve(true);
+
+      console.log(resp);
+    });
+
+
   }
 
   getRandomColor() {

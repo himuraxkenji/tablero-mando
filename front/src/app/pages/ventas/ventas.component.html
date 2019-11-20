@@ -23,5 +23,40 @@
       </div>
     </div>
   </div>
-
+  <br>
+  <div class="row p-0 mt-2 mb-2">
+    <div class="col-lg-3" *ngFor="let porcentaje of porcentajeTotal;let i = index ">
+      <div class="card"  >
+        <div class="card-header justify-content-md-center">
+          <p > {{meses[i]}} </p>
+        </div>
+        <div class="card-body" >
+          <app-pie  [pieChartData]="porcentaje.data" [pieChartLabels]="porcentajeCred"></app-pie>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row p-0 mt-2 mb-2">
+    <div class="col-lg-6">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Ventas por Ubicaciones</p>
+        </div>
+        <div class="card-body">
+          <app-pie [pieChartData]="ventasUbicaciones" [pieChartLabels]="ubicaciones"></app-pie>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card" >
+        <div class="card-header justify-content-md-center">
+          <p >Ventas por Medio</p>
+        </div>
+        <div class="card-body">
+          <app-pie [pieChartData]="ventasMedio" [pieChartLabels]="medios"></app-pie>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

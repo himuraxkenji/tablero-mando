@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ChartOptions, ChartType} from 'chart.js';
+import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Label} from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import {RrhhService} from '../../services/rrhh.service';
@@ -40,7 +40,8 @@ export class PieComponent implements OnInit {
   public pieChartPlugins = [pluginDataLabels];
   public pieChartColors = [
     {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(46, 138, 138, 1)',
+      '#453850', '#f048b7', '#63d8f0', '#bfa584', '#453850', '#f048b7', '#63d8f0', '#bfa584'],
     },
   ];
 
