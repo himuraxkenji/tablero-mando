@@ -5,14 +5,15 @@
   <!-- FILA UNO -->
   <div class="row">
 
-    <div class=" col-2" >
-      <app-card class="row" [titulo]="'Total de Sueldos'"  [contenido]="totalSueldos" [clases]="'text-white bg-dark'"></app-card>
-      <app-card class="row" [titulo]="'Salario mas bajo'"  [contenido]="minimoSueldos" [clases]="'text-white bg-danger'"></app-card>
-      <app-card class="row" [titulo]="'Salario mas alto'"  [contenido]="maximoSueldos" [clases]="'text-white bg-success'"></app-card>
-      <app-card class="row" [titulo]="'Salario promedio'"  [contenido]="sueldoPromedio" [clases]="'text-white bg-primary'"></app-card>
+    <div class="col-lg-3 p-0 m-0">
+    <div class="card-columns" >
+        <app-card  [titulo]="'Total de Sueldos'"  [contenido]="totalSueldos" [clases]="'text-white bg-dark'"></app-card>
+        <app-card  [titulo]="'Salario mas bajo'"  [contenido]="minimoSueldos" [clases]="'text-white bg-danger'"></app-card>
+      <app-card  [titulo]="'Salario mas alto'"  [contenido]="maximoSueldos" [clases]="'text-white bg-success'"></app-card>
+      <app-card  [titulo]="'Salario promedio'"  [contenido]="sueldoPromedio" [clases]="'text-white bg-primary'"></app-card>
     </div>
-
-    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-3 p-0 m-0">
       <div class="card" >
         <div class="card-header justify-content-md-center">
           <p >Inasistencia por genero</p>
@@ -23,7 +24,7 @@
       </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-3">
       <div class="card p-0 m-0">
         <div class="card-header">
           Inasistencias
@@ -53,19 +54,16 @@
 
   <!-- FILA DOS -->
   <div class="row">
-    <div class="col-md-2">
-      <div class="row">
+    <div class="col-lg-5 p-0 m-0">
+    <div class="card-columns" >
+
         <app-card  [titulo]="'Total Empleados'"  [contenido]="totalEmpleados" [clases]="'text-white bg-dark'"></app-card>
-      </div>
-      <div class="row">
         <app-card  [titulo]="'Total Hombres'"  [contenido]="totalHombresMujeres[0]" [clases]="'text-white bg-danger'"></app-card>
-      </div>
-      <div class="row">
         <app-card [titulo]="'Total Mujeres'"  [contenido]="totalHombresMujeres[1]" [clases]="'text-white bg-success'"></app-card>
       </div>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-lg-5 p-0 ml-1">
       <div class="card p-0 m-0">
         <div class="card-header">
           Empleados
@@ -77,26 +75,24 @@
       </div>
     </div>
 
-    <div class="col-md-5">
+  </div>
+  <hr>
+  <br>
+  <div class="row">
 
-      <div class="row">
-        <app-barchart *ngIf="(promiseCursosHombres && promiseCursosMujeres) | async"
-          [options]="optionsCursos" [title]="'Cursos'" [data]="totalCursos" [columnNames]="labelCursoCapacitacion">
-        </app-barchart>
-      </div>
-      <div class="row">
-        <app-barchart *ngIf="(promiseExtrasHombres && promiseExtrasMujeres) | async"
-          [options]="optionsExtras" [title]="'Horas Extra'" [data]="totalHorasExtra" [columnNames]="labelHorasExtra">
-        </app-barchart>
-      </div>
-      <div class="row">
-        <app-barchart *ngIf="(promiseDespidosHombres && promiseDespidosMujeres) | async" [options]="optionsDespidos" [title]="'Despidos'" [data]="totalDespidos" [columnNames]="labelDespidos">
-        </app-barchart>
+    <div class="col-lg">
+      <div class="card-columns">
+      <app-barchart *ngIf="(promiseCursosHombres && promiseCursosMujeres) | async"
+                    [options]="optionsCursos" [title]="'Cursos'" [data]="totalCursos" [columnNames]="labelCursoCapacitacion">
+      </app-barchart>
+      <app-barchart *ngIf="(promiseExtrasHombres && promiseExtrasMujeres) | async"
+                    [options]="optionsExtras" [title]="'Horas Extra'" [data]="totalHorasExtra" [columnNames]="labelHorasExtra">
+      </app-barchart>
+      <app-barchart *ngIf="(promiseDespidosHombres && promiseDespidosMujeres) | async" [options]="optionsDespidos" [title]="'Despidos'" [data]="totalDespidos" [columnNames]="labelDespidos">
+      </app-barchart>
       </div>
     </div>
-
   </div>
-
 
 <!--
   <div class="row">
